@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title>The Monk Diamond | To-Do List</title>
+		<link rel="icon" type="image" href="/favIcon.png">
+
+		<style>	
+		
+			body{
+				margin: 0;
+				margin-left: 10PX;
+				background-color: beige;
+			}
+
+			.header-body{
+				margin-top: 10px;
+				background-color: lightskyblue;
+				width: 60%;
+				font-size: 50px;
+			}
+			.list-body{
+				padding: 10px;
+				background-color: lightgreen;
+				width: 60%;
+				margin-bottom: 20px;
+			}
+			.item-button{
+				background-color: lightpink;
+				border: 0;
+				box-shadow: 2px 2px 0.2px 0.2px black;
+			}
+			.item-text{
+				border: 0;
+				box-shadow: 2px 2px 0.2px 0.2px black;
+			}
+
+		</style>
+
+		<script>
+			
+			function addItem() {
+				var newItem = document.createElement("div");
+				newItem.innerHTML = document.getElementById("box").value;
+				newItem.onclick = removeItem;
+				document.getElementById("list").appendChild(newItem);
+				saveList();
+			}
+
+			function removeItem(item) {
+				document.getElementById("list").removeChild(this);
+				saveList();
+			}
+
+			function saveList() {
+				localStorage.storedList = document.getElementById("list").innerHTML;
+			}
+
+			function loadList() {
+				document.getElementById("list").innerHTML = localStorage.storedList;
+				for(var i = 0; i < list.children.length; i++)
+					list.children[i].onclick = removeItem;
+			}
+	
+		</script>
+	
+	</head>
+
+	<body>
+	
+		<div class="header-body">
+
+			<p>The House of Volkov</p>			
+
+		</div>
+
+		<div class="list-body">
+
+			<p> Special Exhibition To-Do List</p>
+			<input type="text" class="item-text" id="box" value="Type here to add task"/>
+			<br/>
+			<br/>
+			<input type="button" class="item-button" value="Add item" onclick="addItem();"/>
+			<br/>
+			<br/>
+			<div id="list"></div>
+
+			<script>
+				if(localStorage.storedList) {
+					loadList();
+				}
+			</script>
+
+		</div>
+
+	</body>
+
+</html>

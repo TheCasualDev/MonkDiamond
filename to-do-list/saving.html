@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>The Monk Diamond | Placeholder</title>
+	<link rel="icon" type="image" href="/favIcon.png">
+
+	<style>
+
+	</style>
+
+	<script>
+		
+		function save() {
+			var newItem = document.getElementById("box").value;
+			localStorage.box = newItem;
+		}
+
+		function load() {
+			var saveDiv = document.getElementById("savedList");
+			saveDiv.innerHTML = localStorage.box
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+	<input type="text" id="box" value="Type here to add task"><br/>
+	<input type="button" id="save" value="Save" onclick="save();"/><br/>
+	<input type="button" id="load" value="Load" onclick="load();"/><br/>
+	Saved item: <div id="savedList"></div>
+
+</body>
+	
+</html>
